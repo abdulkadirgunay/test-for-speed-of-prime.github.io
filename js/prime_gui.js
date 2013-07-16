@@ -64,7 +64,7 @@
                     
                     module.write_to_log_with_date(
                             test_ctx,
-                            'end test (work time is ' +work_time + 'ms)'
+                            'end of test (work time is ' + work_time + 'ms)'
                             )
                     
                     return
