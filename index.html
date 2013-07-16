@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Test for Speed of Prime</title>
+        
+        <style media="screen">
+            /*<![CDATA[*/
+            body {
+                overflow-y: scroll;
+                font: 14px sans-serif;
+                background: white;
+                color: black;
+            }
+            
+            a {
+                color: red;
+                color: crimson;
+            }
+            
+            .main {
+                display: block;
+                margin: auto;
+                max-width: 1000px;
+            }
+            /*]]>*/
+        </style>
+        
+        <script src="js/prime_gui.js"></script>
+    </head>
+    <body>
+        <main class="main">
+            <h1>Test for Speed of Prime</h1>
+            
+            <hr />
+            
+            <h2>Test stand:</h2>
+            
+            <div><span class="prime_gui_object">[...]</span></div>
+            <script>
+                //<![CDATA[
+                (function (global) {
+                    'use strict'
+                    
+                    var elem = document.querySelector('.prime_gui_object')
+                    
+                    if (!elem) {
+                        return
+                    }
+                    
+                    elem.classList.remove('prime_gui_object')
+                    app__prime_gui.init_elem(elem, 'js/prime_worker.js')
+                })(this)
+                //]]>
+            </script>
+            
+            <!--<hr />
+            
+            <h2>Github</h2>
+            
+            <p>Source code <a href="https://github.com/..." target="_blank">here</a></p>
+            
+            <p>Issues page <a href="https://github.com/.../issues" target="_blank">here</a></p>
+            -->
+        </main>
+    </body>
+</html>
