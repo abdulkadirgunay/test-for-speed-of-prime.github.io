@@ -93,7 +93,7 @@
                         return
                     }
                     
-                    if (prime_from === null) {
+                    if (prime_from === null || prime_from === '') {
                         test_ctx.is_busy = false
                         return
                     }
@@ -111,7 +111,7 @@
                             return
                         }
                         
-                        if (prime_count === null) {
+                        if (prime_count === null || prime_count === '') {
                             test_ctx.is_busy = false
                             return
                         }
