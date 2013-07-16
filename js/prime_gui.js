@@ -71,9 +71,9 @@
                 }
                 
                 module.write_to_log_with_date(
-                                test_ctx,
-                                'found prime (' + data.prime + ')'
-                                )
+                        test_ctx,
+                        'found prime (' + data.prime + ')'
+                        )
             },
             
             run_test: function (test_ctx) {
