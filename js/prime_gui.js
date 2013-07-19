@@ -178,7 +178,7 @@
                 var prime_worker = new Worker(prime_worker_url)
                 
                 var test_ctx = new module.TestCtx
-                test_ctx.version = '2013_07_15_12_04'
+                test_ctx.version = '2013_07_19_02_01'
                 test_ctx.is_closed = false
                 test_ctx.is_busy = false
                 test_ctx.log_elem = log_elem

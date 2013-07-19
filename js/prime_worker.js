@@ -6,10 +6,27 @@
     function create_asm_module (stdlib) {
         'use asm'
         
+        function max (a, b) {
+            a = a | 0
+            b = b | 0
+            
+            if ((b | 0) > (a | 0)) {
+                return b | 0
+            }
+            
+            return a | 0
+        }
+        
         function find_prime (prime_from) {
             prime_from = prime_from | 0
             
             var d = 0
+            
+            prime_from = max(2, prime_from)
+            
+            if ((prime_from | 0) == 2) {
+                return prime_from | 0
+            }
             
             if (!((prime_from | 0) % 2)) {
                 prime_from = prime_from + 1 | 0
@@ -40,7 +57,7 @@
     var asm_module = create_asm_module(global)
     
     global.onmessage = function (evt) {
-        if (evt.data.version != '2013_07_15_12_04') {
+        if (evt.data.version != '2013_07_19_02_01') {
             return
         }
         
@@ -54,7 +71,7 @@
                     prime: prime_from,
                     })
             
-            prime_from += 2
+            prime_from += 1
         }
         
         postMessage({
