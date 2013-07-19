@@ -16,7 +16,6 @@
             }
             
             for (;;) {
-                
                 for (d = 3; (d | 0) < (prime_from | 0); d = d + 2 | 0) {
                     if (!((prime_from | 0) % (d | 0))) {
                         break
