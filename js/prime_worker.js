@@ -22,19 +22,19 @@
             
             var d = 0
             
-            prime_from = max(2, prime_from)
+            prime_from = max(2, prime_from) | 0
             
             if ((prime_from | 0) == 2) {
                 return prime_from | 0
             }
             
-            if (!((prime_from | 0) % 2)) {
+            if (!((prime_from | 0) % 2 | 0)) {
                 prime_from = prime_from + 1 | 0
             }
             
             for (;;) {
                 for (d = 3; (d | 0) < (prime_from | 0); d = d + 2 | 0) {
-                    if (!((prime_from | 0) % (d | 0))) {
+                    if (!((prime_from | 0) % (d | 0) | 0)) {
                         break
                     }
                 }
