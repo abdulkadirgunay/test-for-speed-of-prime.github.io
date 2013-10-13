@@ -195,6 +195,7 @@
                 buttons_block.appendChild(clear_log_button)
                 
                 var log_elem = document.createElement('pre')
+                log_elem.style.minHeight = '2000px'
                 log_elem.style.margin = '1em 0 500px'
                 log_elem.style.border = '1px solid'
                 log_elem.style.padding = '2em'
