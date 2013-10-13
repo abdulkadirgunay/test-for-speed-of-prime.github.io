@@ -70,7 +70,7 @@
                     
                     module.write_to_log_with_date_html(
                             test_ctx,
-                            'end of test (work time is <span class="log-result-text">' + module.html_escape(work_time) + 'ms</span>)'
+                            'end of test (work time is <span class="log_result_text">' + module.html_escape(work_time) + 'ms</span>)'
                             )
                     
                     return
