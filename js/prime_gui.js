@@ -144,9 +144,11 @@
                         
                         module.write_to_log_with_date(
                                 test_ctx,
-                                'begin test (prime_from is ' + test_ctx.prime_from + '; ' +
-                                'prime_count is ' + test_ctx.prime_count +
-                                (kwargs.disable_asm?'; disable_asm':'') + ')'
+                                'begin test (' +
+                                        (kwargs.disable_asm?'disable_asm; ':'') +
+                                        'prime_from is ' + test_ctx.prime_from + '; ' +
+                                        'prime_count is ' + test_ctx.prime_count +
+                                        ')'
                                 )
                         
                         test_ctx.prime_worker.postMessage({
