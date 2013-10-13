@@ -76,7 +76,15 @@
                         )
             },
             
-            run_test: function (test_ctx) {
+            run_test: function (test_ctx, kwargs) {
+                if (kwargs === undefined) {
+                    kwargs = {}
+                }
+                
+                if (kwargs.disable_asm === undefined) {
+                    kwargs.disable_asm = false
+                }
+                
                 if (test_ctx.is_closed) {
                     return
                 }
@@ -131,13 +139,15 @@
                         module.write_to_log_with_date(
                                 test_ctx,
                                 'begin test (prime_from is ' + test_ctx.prime_from + '; ' +
-                                'prime_count is ' + test_ctx.prime_count + ')'
+                                'prime_count is ' + test_ctx.prime_count +
+                                (kwargs.disable_asm?'; disable_asm':'') + ')'
                                 )
                         
                         test_ctx.prime_worker.postMessage({
                                 version: test_ctx.version,
                                 prime_from: test_ctx.prime_from,
                                 prime_count: test_ctx.prime_count,
+                                disable_asm: kwargs.disable_asm,
                                 })
                     })
                 })
@@ -160,6 +170,10 @@
                 run_test_button.href = '#'
                 run_test_button.textContent = 'Run Test'
                 
+                var run_disable_asm_test_button = document.createElement('a')
+                run_disable_asm_test_button.href = '#'
+                run_disable_asm_test_button.textContent = 'Run Test (disable_asm)'
+                
                 var clear_log_button = document.createElement('a')
                 clear_log_button.href = '#'
                 clear_log_button.textContent = 'Clear Log'
@@ -167,6 +181,8 @@
                 var buttons_block = document.createElement('div')
                 buttons_block.style.margin = '1em 0'
                 buttons_block.appendChild(run_test_button)
+                buttons_block.appendChild(document.createTextNode(' | '))
+                buttons_block.appendChild(run_disable_asm_test_button)
                 buttons_block.appendChild(document.createTextNode(' | '))
                 buttons_block.appendChild(clear_log_button)
                 
@@ -178,7 +194,7 @@
                 var prime_worker = new Worker(prime_worker_url)
                 
                 var test_ctx = new module.TestCtx
-                test_ctx.version = '2013_10_09_19_30'
+                test_ctx.version = '2013_10_13_02_11'
                 test_ctx.is_closed = false
                 test_ctx.is_busy = false
                 test_ctx.log_elem = log_elem
@@ -192,6 +208,12 @@
                     evt.preventDefault()
                     
                     module.run_test(test_ctx)
+                })
+                
+                run_disable_asm_test_button.addEventListener('click', function (evt) {
+                    evt.preventDefault()
+                    
+                    module.run_test(test_ctx, {disable_asm: true})
                 })
                 
                 clear_log_button.addEventListener('click', function (evt) {
