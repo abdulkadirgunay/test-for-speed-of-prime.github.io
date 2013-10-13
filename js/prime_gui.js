@@ -52,6 +52,12 @@
                         module.html_escape(text) + '\n'
             },
             
+            write_to_log_with_date_html: function (test_ctx, html) {
+                test_ctx.log_elem.innerHTML +=
+                        '<b>' + module.html_escape(new Date().toLocaleString()) + '</b>: ' +
+                        html + '\n'
+            },
+            
             on_prime_worker_msg: function (test_ctx, data) {
                 if (test_ctx.is_closed || !test_ctx.is_busy) {
                     return
@@ -62,9 +68,9 @@
                     test_ctx.end_time = Date.now()
                     var work_time = test_ctx.end_time - test_ctx.begin_time
                     
-                    module.write_to_log_with_date(
+                    module.write_to_log_with_date_html(
                             test_ctx,
-                            'end of test (work time is ' + work_time + 'ms)'
+                            'end of test (work time is <span class="log-result-text">' + module.html_escape(work_time) + 'ms</span>)'
                             )
                     
                     return
