@@ -57,7 +57,7 @@
     var asm_module = create_asm_module(global)
     
     global.onmessage = function (evt) {
-        if (evt.data.version != '2013_07_19_02_01') {
+        if (evt.data.version != '2013_10_09_19_30') {
             return
         }
         
